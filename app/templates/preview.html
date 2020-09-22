@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="page-header header-filter" style="background-image: url('../static/img/bg2.jpg'); background-size: cover; background-position: top center;">
+        <div class="container">
+            <div class="row">
+                <div class="card">
+                    <div class="col-md-8 ml-auto mr-auto image-section text-center">
+                        <div class="img-preview">
+                            <img class="img-fluid" id="wordcloud" src={{"data:image/png;base64," + image}}>
+                        </div>
+                        <br/>
+                        <div>
+                            <a target="_blank" id="btn-download">
+                                <button type="button" href={{ "data:image/png;base64," + image }} class="btn btn-primary btn-lg btn-round"> Download </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+    <!-- uploading script -->
+    <script>
+        // Prepare the download buttons
+        id = Math.floor(Math.random() * 1e16);
+        $("#btn-download").attr("download", "wordclouded" + id + ".png");
+    </script>
+{% endblock %}
+
+

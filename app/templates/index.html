@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- title and image -->
+    <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('../static/img/bg2.jpg');">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+            <div class="brand">
+                <h1>WordClouder.</h1>
+                <h3>Turn yourself into a beautiful WordCloud !</h3>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Upload section -->
+    <div class="main main-raised">
+        <div class="section text-center" id="Upload">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h2>Upload your portrait here</h2>
+                        <br/>
+                        <form id="upload-file" method="post" enctype="multipart/form-data">
+                            <label for="imageUpload" class="upload-label btn btn-primary btn-round" id="btn-upload">
+                                Choose File
+                            </label>
+                            <input type="file" name="image" id="imageUpload" accept=".png, .jpg, .jpeg">
+                        </form>
+                        <a type="button" class="btn btn-primary btn-lg btn-round" id="btn-try-again" href="/">
+                            Try another one!
+                        </a>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col ml-auto mr-auto image-section" style="display:none;">
+                        <div class="img-preview text-center">
+                            <!-- <div id="imagePreview"></div> -->
+                            <img class="img-fluid" id="imagePreview" src="">
+                        </div>
+                        <br/>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-lg btn-round" id="btn-get-result">WordCloud me!</button>
+                            <div class="loader" style="display:none;"></div>
+                        </div>
+                        <div>
+                            <a target="_blank" id="btn-download">
+                                <button type="button" class="btn btn-primary btn-lg btn-round"> Download </button>
+                            </a>
+                        </div>
+                        <div class="alert error-message text-danger" style="display:none;">
+                            <div class="container">
+                                <div class="alert-icon">
+                                    <i class="material-icons">error_outline</i>
+                                </div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                </button>
+                                <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse for your Boss...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <!-- uploading script -->
+    <script type="text/javascript" src="../static/js/upload.js"></script>
+{% endblock %}
